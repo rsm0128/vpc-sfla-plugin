@@ -53,13 +53,13 @@
                             config_name:config_name
                         },
                         function(id){
-                            console.log(id);
+                            $('.loader').hide();
+
                             var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?edit_config=' + id;
                             var newHtml = '<div class="saved_bloc"><a class="save_later" href="' + newUrl +'">' + config_name + '</a><span id="delete_saved" data-id="' + id +'">x</span></div>';
-                            console.log(newHtml);
                             $('.saved_panel div').eq(1).append(newHtml);
 
-                            $('#debug').html('<div class="vpc-success f-right">'+vpc.success_msg+'</div>').delay(1000).fadeOut(1000);
+                            $('#debug').html('<div class="vpc-success f-right">'+vpc.success_msg+'</div>').show().delay(1000).fadeOut(1000);
                             // location.reload();
                         }
                     );
@@ -69,16 +69,20 @@
              $(document).on('click', '#delete_saved', function () {
                 $('.loader').show('slow');
                 var id=$(this).data('id');
+                var obj = $(this);
                 $.post(
-                        ajax_object.ajax_url,
-                        {
-                            action: "delete_config",
-                            id:id
-                        },
-                        function(data){
-                            $('.loader').hide();
-                            location.reload();
-                        }
+                    ajax_object.ajax_url,
+                    {
+                        action: "delete_config",
+                        id:id
+                    },
+                    function(data){
+                        $('.loader').hide();
+                        obj.parent().remove();
+
+                        $('#debug').html('<div class="vpc-success f-right">'+vpc.delete_msg+'</div>').show().delay(1000).fadeOut(1000);
+                        // location.reload();
+                    }
                 );
              });
             

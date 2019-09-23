@@ -145,6 +145,7 @@ class Vpc_Sfla_Public {
 		$datas['log']              = is_user_logged_in();
 		$datas['login_page']       = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
 		$datas['success_msg']      = __( 'Product successfully saved to your account', 'vpc-sfla' );
+		$datas['delete_msg']      = __( 'Product successfully deleted from your account', 'vpc-sfla' );
 		$datas['modal_title']      = __( 'Your configurator name', 'vpc-sfla' );
 		$datas['send_label']       = __( 'SEND', 'vpc-sfla' );
 		$datas['placeholder_name'] = __( 'Name', 'vpc-sfla' );
