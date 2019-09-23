@@ -1,0 +1,5 @@
+Version 2.1 - November 05th, 2018
+- Added a menu on My Account page to view saved configurations
+
+Version 2.0 - April 27th, 2018
+- Added the compatibility with multiviews add-on

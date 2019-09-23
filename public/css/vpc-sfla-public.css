@@ -1,0 +1,106 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+#vpc-save-btn {
+    display: inline-block;
+}
+
+#vpc-save-btn:after {
+    content: url('../img/save_for_later.svg');
+    margin-left: 5px;
+    font-family:'FontAwesome';
+    font-size:14px;
+    letter-spacing: normal;
+    width: 14px;
+    display: inline-block;
+    top: 2px;
+    position: relative;
+}
+.saved_panel{
+    font-size: 13px;
+}
+.save_later{
+    border: 1px solid;
+    padding: 10px 5px;
+    display: inline-block;
+    margin: 6px 0 4px 4px;
+}
+
+.saved_panel .title{
+    padding: 10px 0;
+    font-size: 16px;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+.saved_panel .product_name{
+    padding: 5px;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.saved_bloc{
+    display: inline-block;
+    padding: 0;
+    margin: 10px;
+    position: relative;
+}
+
+.saved_panel .save_later {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #777;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin: 0px;
+    /*box-shadow: inset 0 0 10px 0 rgba(0,0,0,.1);*/
+}
+
+#delete_saved {
+    position: absolute;
+    border: 1px solid;
+    padding: 0px 5px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border: 0 !important;
+    color: #fff;
+    background-color: #cc0000;
+    top: -5px;
+    right: -10px;
+}
+
+div#vpc-container {
+    position: relative;
+}
+
+.loader {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: rgba(255, 255, 255, .7);
+    top: 0;
+}
+
+.loader img {
+    top: 50%;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+}
+.line{
+        padding: 16px 10px;
+    font-size: 18px;
+}
+.line .btn{
+    
+    text-align: center;
+}
