@@ -57,7 +57,7 @@
 
                             var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?edit_config=' + id;
                             var newHtml = '<div class="saved_bloc"><a class="save_later" href="' + newUrl +'">' + config_name + '</a><span id="delete_saved" data-id="' + id +'">x</span></div>';
-                            $('.saved_panel div').eq(1).append(newHtml);
+                            $('.saved_panel .saved_configurations').append(newHtml);
 
                             $('#debug').html('<div class="vpc-success f-right">'+vpc.success_msg+'</div>').show().delay(1000).fadeOut(1000);
                             // location.reload();

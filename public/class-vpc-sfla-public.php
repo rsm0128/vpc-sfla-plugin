@@ -198,6 +198,13 @@ class Vpc_Sfla_Public {
 
 	function add_after_component( $config, $prod_id ) {
 		if ( is_user_logged_in() && isset( $config['save-for-later'] ) && $config['save-for-later'] == 'Yes' ) {
+			?><!--fermeture php 1-->
+				</div>
+			</div>
+			<div class="o-col xl-1-3 lg-1-3 md-1-1 sm-1-1 saved_panel">
+				<div class='title'><?php esc_html_e( 'My Saved', 'vpc-sfla' ); ?></div>
+				<div class="saved_configurations">
+			<?php
 			$metas = get_user_meta( get_current_user_id(), 'user_configs', true );
 			if ( is_array( $metas ) ) {
 					$metas = array_filter(
@@ -208,29 +215,20 @@ class Vpc_Sfla_Public {
 					);
 
 				if ( sizeof( $metas ) > 0 ) {
-
-					?><!--fermeture php 1-->
-				</div>
-			</div>
-							<div class="o-col xl-1-3 lg-1-3 md-1-1 sm-1-1 saved_panel">
-								<div class='title'><?php esc_html_e( 'My Saved', 'vpc-sfla' ); ?></div>
-								<div>
-
-							<?php
-							// ouverture php
-							foreach ( $metas as $id => $meta ) {
-									$config_url = vpc_get_configuration_url( $meta['prod_id'] );
-								if ( get_option( 'permalink_structure' ) ) {
-									$edit_url = $config_url . "?edit_config=$id";
-								} else {
-									$edit_url = $config_url . "&edit_config=$id";
-								}
-									$config_name = $meta['config_name'];
-								if ( empty( $config_name ) ) {
-									$config_name = $id;
-								}
-									echo '<div class="saved_bloc"><a class="save_later" href="' . $edit_url . '">' . $config_name . '</a><span id="delete_saved" data-id=' . $id . '>x</span></div>';
-							}
+					// ouverture php
+					foreach ( $metas as $id => $meta ) {
+							$config_url = vpc_get_configuration_url( $meta['prod_id'] );
+						if ( get_option( 'permalink_structure' ) ) {
+							$edit_url = $config_url . "?edit_config=$id";
+						} else {
+							$edit_url = $config_url . "&edit_config=$id";
+						}
+							$config_name = $meta['config_name'];
+						if ( empty( $config_name ) ) {
+							$config_name = $id;
+						}
+						echo '<div class="saved_bloc"><a class="save_later" href="' . $edit_url . '">' . $config_name . '</a><span id="delete_saved" data-id=' . $id . '>x</span></div>';
+					}
 				}
 			}
 		}
@@ -268,11 +266,14 @@ class Vpc_Sfla_Public {
 	public function add_saved_design() {
 		if ( class_exists( 'Vpc_Sfla' ) ) {
 			$metas = get_user_meta( get_current_user_id(), 'user_configs', true );
-			if ( ( is_array( $metas ) ) && ( sizeof( $metas ) > 0 ) ) {
-				?>
-						<div class="o-col xl-1-3 lg-1-3 md-1-1 sm-1-1 saved_panel">
-							<div class='title'><?php esc_html_e( 'My Saved Configurations', 'vpc-sfla' ); ?></div>
-						<div>
+			?>
+			
+			<div class="o-col xl-1-3 lg-1-3 md-1-1 sm-1-1 saved_panel">
+				<div class='title'>
+					<?php esc_html_e( 'My Saved Configurations', 'vpc-sfla' ); ?>
+				</div>
+				<div class="saved_configurations">
+					<?php if ( ( is_array( $metas ) ) && ( sizeof( $metas ) > 0 ) ) { ?>
 						<?php
 						$metas = $this->filter_saved_config_arr($metas);
 						foreach ( $metas as $prod_id => $meta ) {
@@ -282,19 +283,20 @@ class Vpc_Sfla_Public {
 								<?php
 								$config_url = vpc_get_configuration_url( $prod_id );
 							foreach($meta as $id => $config_name){
-							if ( get_option( 'permalink_structure' ) ) {
-								$edit_url = $config_url . "?edit_config=$id";
-							} else {
-								$edit_url = $config_url . "&edit_config=$id";
-							}
-							if ( empty( $config_name ) ) {
-								$config_name = $id;
-							}
+								if ( get_option( 'permalink_structure' ) ) {
+									$edit_url = $config_url . "?edit_config=$id";
+								} else {
+									$edit_url = $config_url . "&edit_config=$id";
+								}
+								if ( empty( $config_name ) ) {
+									$config_name = $id;
+								}
+
 								echo '<div class="saved_bloc"><a class="save_later" href="' . $edit_url . '">' . $config_name . '</a><span id="delete_saved" data-id=' . $id . '>x</span></div>';
+							}
 						}
-				}
-			}
-			?>
+					}
+					?>
 				</div>
 			</div>
 			<?php
